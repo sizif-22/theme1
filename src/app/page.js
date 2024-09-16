@@ -1,101 +1,122 @@
+"use client";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-
-export default function Home() {
+import cube from "@/assets/cube.jpg";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
+const Home = () => {
+  const bgColor = "#ffffff";
+  const secondColor = "#1162fb";
+  const textColor = "#000000";
+  const parallax = useRef();
+  const bgRef = useRef();
+  const descriptionRef = useRef();
+  const descContainerRef = useRef();
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        defaults: { duration: 1 },
+        scrollTrigger: {
+          trigger: parallax.current,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: true,
+        },
+      });
+      tl.to(bgRef.current, { y: "+=300" }, -1);
+      tl.to(descriptionRef.current, { opacity: 1 }, 1);
+      tl.to(descContainerRef.current, { margin: 0 }, 1);
+    });
+    return () => ctx.revert();
+  }, []);
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <>
+      <div
+        className="h-screen relative -z-20"
+        style={{ backgroundColor: bgColor, color: textColor }}
+      >
         <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          ref={bgRef}
+          src={cube}
+          alt="cube"
+          className="w-screen h-screen absolute -z-10 object-cover"
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+        {/* container */}
+        <div
+          className="w-screen h-screen relative"
+          style={{ color: textColor }}
+        >
+          {/* Nav */}
+          <div
+            className="h-20 top-0 left-0 bg-white opacity-35 z-10 w-screen absolute"
+            style={{ color: textColor }}
+          ></div>
+          {/* body */}
+          <div className="md:grid grid-cols-2 h-full justify-items-center flex justify-center flex-col gap-10 md:gap-0 items-center">
+            <div className="flex justify-center flex-col gap-5 items-center md:items-start">
+              <p>Organizer name</p>
+              <h1
+                className="special-font text-5xl"
+                style={{ color: textColor }}
+              >
+                The title
+              </h1>
+              <p>where & when</p>
+              <div>Timer</div>
+            </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <div
+              className="flex justify-center flex-col"
+              style={{ color: textColor }}
+            >
+              Join Now BTN
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      </div>
+      <div
+        className="h-96 text-white"
+        style={{ backgroundColor: secondColor, color: bgColor }}
+      >
+        test
+      </div>
+      <div
+        ref={descriptionRef}
+        className="h-screen flex justify-center flex-col items-center md:items-start gap-10 md:gap-0 md:grid grid-cols-2 justify-items-center opacity-0"
+        style={{ backgroundColor: bgColor, color: textColor }}
+      >
+        <Image
+          src={cube}
+          alt="second photo"
+          className="w-3/4 h-auto object-cover"
+          style={{
+            height: "90%",
+          }}
+        />
+        <div
+          ref={descContainerRef}
+          className="flex w-full h-full justify-start md:justify-center p-5 md:p-0 flex-col gap-5 -ml-80"
+          style={{
+            color: textColor,
+          }}
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <h1
+            className="special-font text-white text-5xl"
+            style={{ color: textColor }}
+          >
+            What is all about us?
+          </h1>
+          <p style={{ color: textColor }}>descrption ...</p>
+          <div
+            className="flex justify-center flex-col"
+            style={{ color: textColor }}
+          >
+            Join Now BTN
+          </div>
+        </div>
+      </div>
+    </>
   );
-}
+};
+export default Home;
