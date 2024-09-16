@@ -10,6 +10,7 @@ import { ArrowRight } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
+  //we need to add these to the as a style ... 
   const bgColor = "#ffffff";
   const secondColor = "#1162fb";
   const textColor = "#000000";
