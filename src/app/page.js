@@ -48,9 +48,9 @@ const Home = () => {
           scrub: true,
         },
       });
-      tl.to(bgRef.current, { y: "+=300" }, 0);
-      tl2.to(descriptionRef.current, { opacity: 1 }, -1.2);
-      tl2.to(descContainerRef.current, { margin: 0 }, -1.2);
+      tl.to(bgRef.current, { y: "+=500" }, 0);
+      tl2.to(descriptionRef.current, { opacity: 1 }, -1.5);
+      tl2.to(descContainerRef.current, { margin: 0 }, -1.5);
     });
     return () => ctx.revert();
   }, []);
@@ -92,7 +92,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div
+      {/* <div
         className="py-24 z-30"
         style={{
           backgroundColor: primaryColor,
@@ -109,15 +109,6 @@ const Home = () => {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
-                {/* <button
-                  className=" hover:scale-105 transition-all hover:text-primary py-2 px-4 rounded"
-                  style={{
-                    color: text2Color,
-                    border: `1px ${text2Color} solid`,
-                  }}
-                >
-                  Learn More
-                </button> */}
               </div>
             ))}
             <div className="bg-white bg-opacity-10 p-6 rounded-lg">
@@ -129,37 +120,40 @@ const Home = () => {
               </div>
           </div>
         </div>
-      </div>
-      <div
-        ref={descriptionRef}
-        className="min-h-screen flex justify-center flex-col items-center md:items-start gap-10 md:gap-0 md:grid grid-cols-2 justify-items-center opacity-0 p-8"
-        style={{
-          backgroundColor: secondaryColor,
-          color: textColor,
-        }}
-      >
-        <Image
-          src={cube}
-          alt="second photo"
-          className="w-3/4 h-auto object-cover rounded-lg shadow-lg"
-          style={{
-            height: "90%",
-          }}
-        />
+      </div> */}
+      <div className="h-screen bg-white">
         <div
-          ref={descContainerRef}
-          className="flex w-full h-full justify-start md:justify-center p-5 md:p-0 flex-col gap-5 -ml-80"
+          ref={descriptionRef}
+          className="h-screen flex justify-center flex-col items-center md:items-start gap-10 md:gap-0 md:grid grid-cols-2 justify-items-center  p-8"
+          style={{
+            backgroundColor: secondaryColor,
+            color: textColor,
+          }}
         >
-          <h1 className="special-font text-5xl md:text-6xl font-bold">
-            What is all about us?
-          </h1>
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
-          <BTN />
+          <Image
+            src={cube}
+            alt="second photo"
+            className="w-3/4 h-auto object-cover rounded-lg shadow-lg"
+            style={{
+              height: "90%",
+            }}
+          />
+          <div
+            ref={descContainerRef}
+            className="flex w-full h-full justify-start md:justify-center p-5 md:p-0 flex-col gap-5 "
+            style={{ marginLeft: "-1000px" }}
+          >
+            <h1 className="special-font text-5xl md:text-6xl font-bold">
+              What is all about us?
+            </h1>
+            <p className="text-lg">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <BTN />
+          </div>
         </div>
       </div>
       {/* footer */}
