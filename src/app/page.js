@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import cube from "@/assets/cube.jpg";
 import gsap from "gsap";
@@ -109,7 +109,7 @@ const Home = () => {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
-                <button
+                {/* <button
                   className=" hover:scale-105 transition-all hover:text-primary py-2 px-4 rounded"
                   style={{
                     color: text2Color,
@@ -117,9 +117,16 @@ const Home = () => {
                   }}
                 >
                   Learn More
-                </button>
+                </button> */}
               </div>
             ))}
+            <div className="bg-white bg-opacity-10 p-6 rounded-lg">
+                <h3 className="text-2xl font-semibold mb-4">Add Feature Btn</h3>
+                <p className="mb-4">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
           </div>
         </div>
       </div>

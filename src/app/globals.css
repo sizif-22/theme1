@@ -6,7 +6,9 @@
 ::-webkit-scrollbar {
   display: none;
 }
-
+* {
+  outline: none;
+}
 .special-font {
   font-family: "El Messiri", system-ui;
   font-optical-sizing: auto;
