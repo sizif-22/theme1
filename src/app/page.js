@@ -92,68 +92,39 @@ const Home = () => {
           </div>
         </div>
       </div>
-      {/* <div
-        className="py-24 z-30"
+      
+
+      <div
+        ref={descriptionRef}
+        className="h-screen flex justify-center flex-col items-center md:items-start gap-10 md:gap-0 md:grid grid-cols-2 justify-items-center p-8"
         style={{
-          backgroundColor: primaryColor,
-          color: text2Color,
+          backgroundColor: secondaryColor,
+          color: textColor,
         }}
       >
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-8">Featured Content</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="bg-white bg-opacity-10 p-6 rounded-lg">
-                <h3 className="text-2xl font-semibold mb-4">Feature {item}</h3>
-                <p className="mb-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </div>
-            ))}
-            <div className="bg-white bg-opacity-10 p-6 rounded-lg">
-                <h3 className="text-2xl font-semibold mb-4">Add Feature Btn</h3>
-                <p className="mb-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </div>
-          </div>
-        </div>
-      </div> */}
-      <div className="h-screen bg-white">
-        <div
-          ref={descriptionRef}
-          className="h-screen flex justify-center flex-col items-center md:items-start gap-10 md:gap-0 md:grid grid-cols-2 justify-items-center  p-8"
+        <Image
+          src={cube}
+          alt="second photo"
+          className="w-3/4 h-auto object-cover rounded-lg shadow-lg"
           style={{
-            backgroundColor: secondaryColor,
-            color: textColor,
+            height: "90%",
           }}
+        />
+        <div
+          ref={descContainerRef}
+          className="flex w-full h-full justify-start md:justify-center p-5 md:p-0 flex-col gap-5 "
+          style={{ marginLeft: "-1000px" }}
         >
-          <Image
-            src={cube}
-            alt="second photo"
-            className="w-3/4 h-auto object-cover rounded-lg shadow-lg"
-            style={{
-              height: "90%",
-            }}
-          />
-          <div
-            ref={descContainerRef}
-            className="flex w-full h-full justify-start md:justify-center p-5 md:p-0 flex-col gap-5 "
-            style={{ marginLeft: "-1000px" }}
-          >
-            <h1 className="special-font text-5xl md:text-6xl font-bold">
-              What is all about us?
-            </h1>
-            <p className="text-lg">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <BTN />
-          </div>
+          <h1 className="special-font text-5xl md:text-6xl font-bold">
+            What is all about us?
+          </h1>
+          <p className="text-lg">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </p>
+          <BTN />
         </div>
       </div>
       {/* footer */}
