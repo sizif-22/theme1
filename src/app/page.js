@@ -4,14 +4,23 @@ import Image from "next/image";
 import cube from "@/assets/cube.jpg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import { ArrowRight } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  ArrowRight,
+  MapPin,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+} from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const primaryColor = '#1162fb';
-const secondaryColor = '#000000';
-const textColor = '#ffffff';
-const text2Color = '#ffffff';
+const primaryColor = "#1162fb";
+const secondaryColor = "#000000";
+const textColor = "#ffffff";
+const text2Color = "#ffffff";
 
 const Home = () => {
   const parallax = useRef();
@@ -30,19 +39,25 @@ const Home = () => {
           scrub: true,
         },
       });
+      const tl2 = gsap.timeline({
+        defaults: { duration: 1 },
+        scrollTrigger: {
+          trigger: parallax.current,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: true,
+        },
+      });
       tl.to(bgRef.current, { y: "+=300" }, 0);
-      tl.to(descriptionRef.current, { opacity: 1 }, 1);
-      tl.to(descContainerRef.current, { margin: 0 }, 1);
+      tl2.to(descriptionRef.current, { opacity: 1 }, -1.2);
+      tl2.to(descContainerRef.current, { margin: 0 }, -1.2);
     });
     return () => ctx.revert();
   }, []);
 
   return (
     <>
-      <div
-        className="min-h-screen relative"
-        style={{ color: textColor }}
-      >
+      <div className="min-h-screen relative" style={{ color: textColor }}>
         <div className="absolute inset-0 -z-10">
           <Image
             ref={bgRef}
@@ -140,6 +155,100 @@ const Home = () => {
           <BTN />
         </div>
       </div>
+      {/* footer */}
+      <footer
+        className="py-16 z-30"
+        style={{ backgroundColor: primaryColor, color: textColor }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {/* Company Info */}
+            <div>
+              <h3 className="text-2xl font-bold mb-4">Company Name</h3>
+              <p className="mb-4">Providing innovative solutions since 20XX</p>
+              <div className="flex space-x-4">
+                <Facebook className="cursor-pointer" />
+                <Twitter className="cursor-pointer" />
+                <Instagram className="cursor-pointer" />
+                <Linkedin className="cursor-pointer" />
+              </div>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h3 className="text-xl font-bold mb-4">Contact Us</h3>
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2">
+                  <Mail size={18} />
+                  <p>contact@example.com</p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Phone size={18} />
+                  <p>+1 (123) 456-7890</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Locations */}
+            <div>
+              <h3 className="text-xl font-bold mb-4">Our Locations</h3>
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2">
+                  <MapPin size={18} />
+                  <p>New York, NY</p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <MapPin size={18} />
+                  <p>San Francisco, CA</p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <MapPin size={18} />
+                  <p>London, UK</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+              <ul className="space-y-2">
+                <li>
+                  <a href="#" className="hover:underline">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    Services
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:underline">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-8 pt-8 border-t border-gray-700">
+            <p className="text-center">
+              &copy; {new Date().getFullYear()} Company Name. All rights
+              reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
     </>
   );
 };
