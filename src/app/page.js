@@ -49,7 +49,6 @@ const Home = () => {
         },
       });
       tl.to(bgRef.current, { y: "+=500" }, 0);
-      tl2.to(descriptionRef.current, { opacity: 1 }, -1.5);
       tl2.to(descContainerRef.current, { margin: 0 }, -1.5);
     });
     return () => ctx.revert();
@@ -92,39 +91,40 @@ const Home = () => {
           </div>
         </div>
       </div>
-      
 
-      <div
-        ref={descriptionRef}
-        className="h-screen flex justify-center flex-col items-center md:items-start gap-10 md:gap-0 md:grid grid-cols-2 justify-items-center p-8"
-        style={{
-          backgroundColor: secondaryColor,
-          color: textColor,
-        }}
-      >
-        <Image
-          src={cube}
-          alt="second photo"
-          className="w-3/4 h-auto object-cover rounded-lg shadow-lg"
-          style={{
-            height: "90%",
-          }}
-        />
+      <div className="bg-white h-screen">
         <div
-          ref={descContainerRef}
-          className="flex w-full h-full justify-start md:justify-center p-5 md:p-0 flex-col gap-5 "
-          style={{ marginLeft: "-1000px" }}
+          ref={descriptionRef}
+          className="h-screen flex justify-center flex-col items-center md:items-start gap-10 md:gap-0 md:grid grid-cols-2 justify-items-center p-8"
+          style={{
+            backgroundColor: secondaryColor,
+            color: textColor,
+          }}
         >
-          <h1 className="special-font text-5xl md:text-6xl font-bold">
-            What is all about us?
-          </h1>
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
-          <BTN />
+          <Image
+            src={cube}
+            alt="second photo"
+            className="w-3/4 h-auto object-cover rounded-lg shadow-lg"
+            style={{
+              height: "90%",
+            }}
+          />
+          <div
+            ref={descContainerRef}
+            className="flex w-full h-full justify-start md:justify-center p-5 md:p-0 flex-col gap-5 "
+            style={{ marginLeft: "-1000px" }}
+          >
+            <h1 className="special-font text-5xl md:text-6xl font-bold">
+              What is all about us?
+            </h1>
+            <p className="text-lg">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <BTN />
+          </div>
         </div>
       </div>
       {/* footer */}
